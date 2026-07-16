@@ -8,7 +8,19 @@ class Calc {
         return A + B;
     }
 
-    // A default parameter: if step is left out, it is 1.
+    // An overload of add: same name, three inputs.
+    public add(A, B, C) {
+        return A + B + C;
+    }
+
+    // A variadic function: sums however many numbers you pass.
+    public sumAll(...) {
+        total = 0;
+        for (n : etc) { total += n; }
+        return total;
+    }
+
+    // A default parameter: if Step is left out, it is 1.
     public increment(N, Step = 1) {
         return N + Step;
     }
@@ -31,6 +43,8 @@ class Calc {
 
 calc = new Calc();
 c.log("add(2, 3)           = " + calc.add(2, 3));
+c.log("add(2, 3, 4)        = " + calc.add(2, 3, 4));
+c.log("sumAll(1,2,3,4,5)   = " + calc.sumAll(1, 2, 3, 4, 5));
 c.log("increment(10)       = " + calc.increment(10));
 c.log("increment(10, 5)    = " + calc.increment(10, 5));
 c.log("addThenDouble(2, 3) = " + calc.addThenDouble(2, 3));

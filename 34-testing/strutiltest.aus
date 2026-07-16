@@ -1,0 +1,21 @@
+// strutiltest.aus - tests for StringUtil
+include aunit;
+include strutil;
+
+@Test(name = "StringUtil Tests")
+class StringUtilTests {
+    private su = null;
+
+    @BeforeEach
+    public setup() { this.su = new StringUtil(); }
+
+    @Test(name = "shout upper-cases and adds !")
+    public testShout() {
+        return test.expect(this.su.shout("hi"), "HI!");
+    }
+
+    @Test(name = "repeat concatenates N copies")
+    public testRepeat() {
+        return test.expect(this.su.repeat("ab", 3), "ababab");
+    }
+}

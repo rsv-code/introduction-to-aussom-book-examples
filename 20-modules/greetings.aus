@@ -3,11 +3,16 @@
  */
 class Greeter {
     /**
+     * The word each greeting starts with.
+     */
+    public greeting = "Hello";
+
+    /**
      * Builds a friendly greeting.
      * @p Name is the name to greet.
      * @r string - the finished greeting.
      */
     public greet(Name) {
-        return "Hello, " + Name + "!";
+        return this.greeting + ", " + Name + "!";
     }
 }

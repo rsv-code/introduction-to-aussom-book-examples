@@ -19,6 +19,12 @@ items @= "second";
 c.log("items: " + #items + " long, first = " + items[0]);
 c.log("length of \"hello\": " + #"hello");
 
+// ? safely reads a missing key/member/index as null instead of erroring.
+user = {"name": "Ada"};
+c.log("?user[\"name\"]:  " + ?user["name"]);
+c.log("?user[\"email\"]: " + ?user["email"]);
+c.log("?items[99]:      " + ?items[99]);
+
 // Precedence: * before +, and parentheses win.
 c.log("2 + 3 * 4    = " + (2 + 3 * 4));
 c.log("(2 + 3) * 4  = " + ((2 + 3) * 4));

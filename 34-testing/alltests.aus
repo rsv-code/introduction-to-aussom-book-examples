@@ -1,0 +1,4 @@
+// alltests.aus - one file that pulls in every test suite.
+// Run them all at once with:  aussom -ta alltests.aus
+include calctest;
+include strutiltest;

@@ -1,0 +1,9 @@
+// strutil.aus - a second bit of code to test
+class StringUtil {
+    public shout(Text) { return Text.toUpper() + "!"; }
+    public repeat(Text, N) {
+        out = "";
+        for (i = 0; i < N; i++) { out += Text; }
+        return out;
+    }
+}

@@ -1,0 +1,14 @@
+// panama_demo.auss - calling native C functions with Panama
+include panama;
+
+lib = panama.defaultLibrary();                 // the C standard library
+
+// int getpid(void) - takes no arguments.
+getpid = lib.bind("getpid", panama.funcType("int", []));
+c.log("This process id is " + getpid.call());
+
+// size_t strlen(const char *) - needs a native C string.
+arena = panama.arena();                        // a scope that owns native memory
+strlen = lib.bind("strlen", panama.funcType("size_t", ["pointer"]));
+text = panama.cstring("native world", arena);  // Aussom string -> C string
+c.log("strlen(\"native world\") = " + strlen.call(text));

@@ -1,0 +1,16 @@
+// aji_demo.auss - calling Java directly from Aussom with AJI
+include aji;
+
+// Call a static Java method. Simple results convert to Aussom values.
+biggest = aji.invokeStatic("java.lang.Math", "max", 3, 9);
+c.log("Math.max(3, 9) = " + biggest);
+
+// Create a Java object, then call its instance methods with .invoke.
+sb = aji.newObj("java.lang.StringBuilder");
+sb.invoke("append", "Hello, ");
+sb.invoke("append", "Java!");
+c.log(sb.invoke("toString"));
+
+// Read a static field.
+pi = aji.getStaticMember("java.lang.Math", "PI");
+c.log("Math.PI = " + pi);
