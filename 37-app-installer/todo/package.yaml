@@ -1,0 +1,69 @@
+name: todo
+version: 1.0.0
+description: Package todo.
+license: Apache-2.0
+author: Your Name
+authorEmail: you@example.com
+type: pure
+dependencies: { }
+installer:
+  enabled: true
+  appName: Todo
+  version: 1.0.0
+  vendor: Your Name or Company
+  copyright: Copyright 2026 Your Name or Company
+  description: Description of Todo.
+  mainScript: todo.aus
+  appArgs: [ ]
+  javaOptions:
+  - --enable-native-access=ALL-UNNAMED
+  - --add-opens=java.base/jdk.internal.module=ALL-UNNAMED
+  - --sun-misc-unsafe-memory-access=allow
+  linux:
+    # icon: package-files/icons/app.png    # uncomment + drop a 1024x1024 PNG here
+    types:
+    - deb
+    shortcut: true
+    fileAssociations: [ ]
+    launchers: [ ]
+    javaOptions: [ ]
+    bundle:
+      fx: false
+      gtk4: false
+      extraJars: [ ]
+      extraResources: [ ]
+    signing:
+      enabled: false
+  windows:
+    # icon: package-files/icons/app.ico    # uncomment + drop a multi-resolution ICO here
+    types:
+    - msi
+    shortcut: true
+    console: true
+    fileAssociations: [ ]
+    launchers: [ ]
+    javaOptions: [ ]
+    bundle:
+      fx: false
+      gtk4: false
+      extraJars: [ ]
+      extraResources: [ ]
+    signing:
+      enabled: false
+      identity: ''
+  macos:
+    # icon: package-files/icons/app.icns    # uncomment + drop an ICNS bundle here
+    types:
+    - pkg
+    shortcut: false
+    fileAssociations: [ ]
+    launchers: [ ]
+    javaOptions: [ ]
+    bundle:
+      fx: false
+      gtk4: false
+      extraJars: [ ]
+      extraResources: [ ]
+    signing:
+      enabled: false
+      identity: ''

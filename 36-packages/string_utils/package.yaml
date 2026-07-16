@@ -1,0 +1,12 @@
+name: string_utils
+version: 1.0.0
+description: "Small helpers for working with strings."
+license: "Apache-2.0"
+author: "Ada Lovelace"
+authorEmail: "ada@example.com"
+type: pure
+dependencies: {}
+repository: "https://github.com/ada/string_utils"
+keywords:
+  - strings
+  - text

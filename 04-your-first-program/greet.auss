@@ -1,0 +1,7 @@
+// A first look at command-line arguments. Run it with your name after the
+// file name, for example:  aussom greet.auss Ada
+if (#args > 0) {
+    c.log("Hello, " + args[0] + "!");
+} else {
+    c.log("Hello there! Tip: type your name after the file name.");
+}

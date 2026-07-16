@@ -1,0 +1,33 @@
+// Chapter 21 - The Console and Core Helpers
+include os;
+
+class Dog { }
+
+// --- the console: different levels of output ---
+c.log("log:  plain output, no prefix");
+c.info("info: an informational note");
+c.warn("warn: something to watch");
+c.err("err:  something went wrong");
+c.print("print writes with no newline... ");
+c.println("and println finishes the line.");
+
+// --- formatted output with sprintf / printf (os module) ---
+c.log("---- formatting ----");
+c.log(os.sprintf("Hello, {}! You have {} messages.", "Ada", 3));
+os.printf("{0} squared is {1}\n", 9, 81);
+os.out("os.out writes to standard output");
+
+// --- lang.type: what kind of value is this? ---
+c.log("---- lang.type ----");
+c.log("42     is a " + lang.type(42));
+c.log("\"hi\"   is a " + lang.type("hi"));
+c.log("[1,2]  is a " + lang.type([1, 2]));
+c.log("new Dog() is a " + lang.type(new Dog()));
+
+// --- json: turn data into text and back ---
+c.log("---- json ----");
+person = {"name": "Ada", "age": 36, "langs": ["Aussom", "Java"]};
+text = person.toJson();
+c.log("encoded: " + text);
+back = json.parse(text);
+c.log("name = " + back["name"] + ", first lang = " + back["langs"][0]);

@@ -1,0 +1,6 @@
+class Todo {
+    public main(args) {
+        if (#args == 0) { c.log("usage: todo <task>"); return; }
+        c.log("Added task: " + args[0]);
+    }
+}

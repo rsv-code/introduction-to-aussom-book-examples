@@ -1,0 +1,28 @@
+// calctest.aus - tests for Calculator; run with:  aussom -t calctest.aus
+include aunit;
+include calc;
+
+@Test(name = "Calculator Tests")
+class CalculatorTests {
+    private calc = null;
+
+    // @BeforeEach runs before every test, giving each a fresh Calculator.
+    @BeforeEach
+    public setup() { this.calc = new Calculator(); }
+
+    @Test(name = "add sums two numbers")
+    public testAdd() {
+        return test.expect(this.calc.add(2, 3), 5);
+    }
+
+    @Test(name = "divide returns the quotient")
+    public testDivide() {
+        return test.expect(this.calc.divide(10, 2), 5.0);
+    }
+
+    @Test(name = "divide by zero throws")
+    public testDivideByZero() {
+        return test.expectThrows(::divByZero);
+    }
+    public divByZero() { this.calc.divide(1, 0); }
+}

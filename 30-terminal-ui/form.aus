@@ -1,0 +1,59 @@
+// form.aus - a text UI built from curses components
+include curses;
+
+class Form {
+    private g = null;
+    private name = null;
+    private city = null;
+    private notes = null;
+    private subs = null;
+
+    public main(args) {
+        sc = new screen();
+        this.g = new gui(sc, color.blue);
+        this.g.start();
+
+        // The input controls (kept so we can read them on Save).
+        this.name = new textbox("Ada Lovelace", false);    // false = single-line field
+        this.city = new combobox(["Denver", "London", "Paris"]);
+        this.notes = new textbox("Two lines\nof notes", true, 28, 3);  // multi-line text area
+        this.subs = new checkbox(["Newsletter", "Product news"]);
+
+        // A panel arranges the components with a layout.
+        p = new panel();
+        p.setPrefSize(46, 15);
+        p.setLayout(new linearlayout());
+        p.add(new label("Contact Form"));
+        p.add(new label("Name:"));
+        p.add(this.name);
+        p.add(new label("City:"));
+        p.add(this.city);
+        p.add(new label("Notes:"));
+        p.add(this.notes);
+        p.add(new label("Subscribe to:"));
+        p.add(this.subs);
+        p.add(new button("Save", ::onSave));
+
+        // A menu bar across the top.
+        mbar = new menubar();
+        fmenu = new menu("File");
+        fmenu.addItem("Save", ::onMenuSave);
+        fmenu.addItem("Exit", ::onExit);
+        mbar.add(fmenu);
+
+        w = new win();
+        w.setMenuBar(mbar);
+        w.set(p);
+        this.g.addWindowAndWait(w);
+    }
+
+    // Read the values back when Save is pressed.
+    public onSave() {
+        summary = "Name:  " + this.name.getText() + "\n"
+                + "City:  " + this.city.getSelectedItem() + "\n"
+                + "Lists: " + this.subs.getCheckedItems();
+        dialog.show(this.g, "Saved", summary, dlgbtn.ok);
+    }
+    public onMenuSave(string Label) { this.onSave(); }
+    public onExit(string Label) { this.g.stop(); }
+}

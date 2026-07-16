@@ -1,0 +1,6 @@
+// Chapter 21 - Reading input from the console
+include os;
+
+name = os.readLine("What is your name? ");
+age  = os.readLine("How old are you? ");
+c.log("Hello, " + name + "! In 10 years you'll be " + (age.parseInt() + 10) + ".");

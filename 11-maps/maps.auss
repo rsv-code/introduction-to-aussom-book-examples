@@ -1,0 +1,28 @@
+// Chapter 11 - Maps
+
+person = {"name": "Ada", "age": 36};
+c.log("name (bracket): " + person["name"]);
+c.log("age (dot):      " + person.age);
+c.log("size:           " + #person);
+
+person["city"] = "Paris";                 // add or update a key with brackets
+person.put("job", "coder");               // or with .put()
+c.log("after adds: size " + #person);
+
+c.log("has 'city': " + person.containsKey("city"));
+c.log("has 'zip':  " + person.containsKey("zip"));
+
+// Safe ways to read a key that might not be there:
+c.log("get('zip'):         " + person.get("zip"));          // null if missing
+c.log("getd('zip', 'n/a'): " + person.getd("zip", "n/a"));  // a default if missing
+
+person.remove("age");                     // remove a key
+c.log("after remove 'age', has age: " + person.containsKey("age"));
+
+c.log("keys:   " + person.keySet().join(", "));
+c.log("values: " + person.values().join(", "));
+
+c.log("entries:");
+for (key : person) {
+    c.log("  " + key + " = " + person[key]);
+}

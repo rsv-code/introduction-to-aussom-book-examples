@@ -1,0 +1,18 @@
+// Chapter 22 - Dates and Times
+
+// the CURRENT time: use now(). A bare "new Date()" is the epoch (1970)!
+today = new Date().now();
+c.log("right now (UTC): " + today.format("yyyy-MM-dd HH:mm:ss"));
+
+// a specific date, parsed from text (pattern is Java DateTimeFormatter style)
+launch = new Date().parse("2026-07-14 09:30:00", "yyyy-MM-dd HH:mm:ss");
+c.log("launch:    " + launch.format("EEEE, MMMM d, yyyy 'at' HH:mm"));
+c.log("year " + launch.getYear() + ", " + launch.getMonthName() + ", day " + launch.getDayOfMonth());
+
+// date math - copy() first so we don't change the original
+deadline = launch.copy().addDays(30);
+c.log("30 days later: " + deadline.format("yyyy-MM-dd"));
+
+// comparisons and the gap between two dates
+c.log("launch before deadline? " + launch.isBefore(deadline));
+c.log("days between:           " + launch.between(deadline, "days"));

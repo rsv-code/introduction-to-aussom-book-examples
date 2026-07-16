@@ -1,0 +1,43 @@
+// Chapter 16 - Classes and Objects
+
+class BankAccount {
+    // Members: the data each account holds.
+    public owner = null;
+    private balance = 0;         // private: only this class touches it directly
+
+    // Constructor: runs when you create a new account with `new`.
+    public BankAccount(Name, StartingBalance) {
+        this.owner = Name;
+        this.balance = StartingBalance;
+    }
+
+    // Methods: what an account can do.
+    public deposit(Amount) {
+        this.balance = this.balance + Amount;
+        return this.balance;
+    }
+    public withdraw(Amount) {
+        if (Amount > this.balance) {
+            return "Insufficient funds";
+        }
+        this.balance = this.balance - Amount;
+        return this.balance;
+    }
+    public getBalance() {
+        return this.balance;
+    }
+}
+
+// Two independent objects, each with its own balance.
+alice = new BankAccount("Alice", 100);
+bob   = new BankAccount("Bob", 50);
+
+c.log(alice.owner + " starts with " + alice.getBalance());
+c.log(bob.owner + " starts with " + bob.getBalance());
+
+alice.deposit(25);
+bob.withdraw(20);
+
+c.log(alice.owner + " now has " + alice.getBalance());
+c.log(bob.owner + " now has " + bob.getBalance());
+c.log("Bob tries to overdraw: " + bob.withdraw(1000));

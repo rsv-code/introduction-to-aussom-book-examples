@@ -1,0 +1,26 @@
+// Chapter 18 - Static and Extern Classes
+
+include sys;
+
+// A static class: ONE shared instance, called by name (no `new`).
+static class idGenerator {
+    private nextId = 1;
+    public next() {
+        id = this.nextId;
+        this.nextId = this.nextId + 1;
+        return id;
+    }
+}
+
+c.log("id: " + idGenerator.next());
+c.log("id: " + idGenerator.next());
+c.log("id: " + idGenerator.next());
+
+// A static utility class: a home for related functions, no state needed.
+static class tempConverter {
+    public toFahrenheit(Celsius) { return Celsius * 9 / 5 + 32; }
+}
+c.log("100C = " + tempConverter.toFahrenheit(100) + "F");
+
+// sys is an EXTERN class from the standard library - it wraps Java code.
+c.log("Running on: " + sys.getOsName() + " (" + sys.getOsArch() + ")");

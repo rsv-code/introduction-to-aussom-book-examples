@@ -1,0 +1,24 @@
+// Chapter 5 - Variables, Values, and Comments
+// Creating variables, reassigning them, and holding different types.
+
+// Create a variable by assigning a value with =.
+name = "Ada";
+age = 36;
+c.log("Name: " + name);
+c.log("Age: " + age);
+
+// Reassign a variable. The box now holds a new value.
+age = 37;
+c.log("Next year Ada will be " + age + ".");
+
+// Dynamic typing: one variable can hold any type of value.
+value = 42;
+c.log("value holds a " + lang.type(value) + " (" + value + ")");
+value = "forty-two";
+c.log("value holds a " + lang.type(value) + " (" + value + ")");
+value = 3.14;
+c.log("value holds a " + lang.type(value) + " (" + value + ")");
+
+/* This is a block comment. Aussom ignores everything
+   between the slash-star markers, across as many lines as you like. */
+c.log("Done.");

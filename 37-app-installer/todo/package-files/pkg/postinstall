@@ -1,0 +1,10 @@
+#!/bin/sh
+# postinstall - macOS pkg post-install hook for this app.
+# Runs as root. Edit as needed.
+set -e
+APP="/Applications/Todo.app"
+
+# PATH symlink. ln -sf overwrites any prior symlink so a
+# re-install or upgrade refreshes the link without erroring.
+ln -sf "$APP/Contents/MacOS/Todo" /usr/local/bin/todo
+exit 0

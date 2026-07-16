@@ -1,0 +1,71 @@
+include file;
+
+// Holds the list of tasks and saves them to a JSON file.
+class TaskStore {
+    private path = null;
+    private tasks = [];
+
+    public TaskStore(P) {
+        this.path = P;
+        if (file.exists(this.path)) {
+            this.tasks = json.parse(file.read(this.path));   // load existing tasks
+        }
+    }
+    private save() { file.write(this.path, this.tasks.toJson()); }
+
+    public add(Text) {
+        this.tasks @= {"text": Text, "done": false};
+        this.save();
+    }
+    public all() { return this.tasks; }
+    public complete(I) {
+        if (I < 0 || I >= #this.tasks) { throw "no task #" + (I + 1); }
+        this.tasks[I]["done"] = true;
+        this.save();
+    }
+    public remove(I) {
+        if (I < 0 || I >= #this.tasks) { throw "no task #" + (I + 1); }
+        this.tasks.removeAt(I);
+        this.save();
+    }
+}
+
+class App {
+    public main(args) {
+        store = new TaskStore("tasks.json");
+        if (#args == 0) { this.usage(); return; }
+        try {
+            cmd = args[0];
+            if (cmd == "add") {
+                store.add(args[1]);
+                c.log("Added: " + args[1]);
+            } else if (cmd == "list") {
+                tasks = store.all();
+                if (#tasks == 0) { c.log("No tasks yet."); }
+                for (i = 0; i < #tasks; i++) {
+                    t = tasks[i];
+                    mark = "[ ]";
+                    if (t["done"]) { mark = "[x]"; }
+                    c.log("  " + (i + 1) + ". " + mark + " " + t["text"]);
+                }
+            } else if (cmd == "done") {
+                store.complete(args[1].parseInt() - 1);
+                c.log("Completed task " + args[1] + ".");
+            } else if (cmd == "rm") {
+                store.remove(args[1].parseInt() - 1);
+                c.log("Removed task " + args[1] + ".");
+            } else {
+                this.usage();
+            }
+        } catch (e) {
+            c.err(e.getText());
+        }
+    }
+    public usage() {
+        c.log("usage: tasks <command> [args]");
+        c.log("  add <text>   add a task");
+        c.log("  list         show all tasks");
+        c.log("  done <n>     mark task n complete");
+        c.log("  rm <n>       remove task n");
+    }
+}

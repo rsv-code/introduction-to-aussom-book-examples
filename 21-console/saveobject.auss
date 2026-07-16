@@ -1,0 +1,22 @@
+// Chapter 21 - Saving whole objects with pack and unpack
+include file;
+
+class Player {
+    public name = null;
+    public score = 0;
+    // A no-arg-constructible class (all params have defaults) - unpack needs this.
+    public Player(Nm = null, Sc = 0) { this.name = Nm; this.score = Sc; }
+    public describe() { return this.name + " has " + this.score + " points"; }
+}
+
+// Marshal: turn a live object into a string, then save it to disk.
+ada = new Player("Ada", 95);
+file.write("player.save", ada.pack());
+c.log("saved to player.save");
+
+// Unmarshal: read it back later and rebuild the REAL object.
+loaded = json.unpack(file.read("player.save"));
+c.log("type:   " + lang.type(loaded));      // Player - not just a map
+c.log("loaded: " + loaded.describe());       // its methods work
+loaded.score = loaded.score + 5;             // and it's a normal object
+c.log("after:  " + loaded.describe());

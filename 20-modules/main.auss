@@ -1,0 +1,10 @@
+// Pull in the greetings module (greetings.aus in this folder)...
+include greetings;
+// ...and the mathutil module from the lib subfolder (lib/mathutil.aus).
+include lib.mathutil;
+
+g = new Greeter();
+c.log(g.greet("Ada"));
+
+m = new MathUtil();
+c.log("square(7) = " + m.square(7));

@@ -1,0 +1,14 @@
+// dashboard.auss - clear the screen and place colored text at positions
+include jansi;
+jansi.systemInstall();
+
+a = new ansi();
+a.eraseScreen();                                     // clear the whole screen
+a.cursor(2, 3).fgCyan().bold().a("System Status").reset();
+a.cursor(4, 5).fgGreen().a("[ OK ] ").reset().a("Database");
+a.cursor(5, 5).fgGreen().a("[ OK ] ").reset().a("Cache");
+a.cursor(6, 5).fgRed().bold().a("[DOWN] ").reset().a("Mailer");
+a.cursor(8, 3).faint().a("updated just now").reset();
+jansi.println(a);
+
+jansi.systemUninstall();

@@ -1,0 +1,12 @@
+// Chapter 27 - Command-line arguments and exit codes
+include os;
+
+class Greet {
+    public main(args) {
+        if (#args == 0) {
+            os.outErr("usage: greet <name>");   // message to standard error
+            os.exit(1);                          // stop with a non-zero exit code
+        }
+        c.log("Hello, " + args[0] + "!");
+    }
+}

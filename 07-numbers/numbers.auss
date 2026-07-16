@@ -1,0 +1,25 @@
+// Chapter 7 - Working with Numbers
+
+// int is whole; double has a decimal point.
+count = 10;
+price = 3.99;
+c.log("count is a " + lang.type(count) + ", price is a " + lang.type(price));
+
+// Arithmetic.
+c.log("10 + 3  = " + (10 + 3));
+c.log("10 - 3  = " + (10 - 3));
+c.log("10 * 3  = " + (10 * 3));
+c.log("10 / 3  = " + (10 / 3));    // division ALWAYS gives a double
+c.log("10 / 5  = " + (10 / 5));    // even when it divides evenly
+c.log("10 ~/ 3 = " + (10 ~/ 3));   // ~/ is whole-number (floor) division
+c.log("10 % 3  = " + (10 % 3));    // % is the remainder
+
+// Conversions.
+c.log("(3.99).toInt()      = " + (3.99).toInt());   // drops the decimal part
+c.log("(42).toString()     = " + (42).toString());
+c.log("Int.parse('100')    = " + Int.parse("100"));
+c.log("Double.parse('3.5') = " + Double.parse("3.5"));
+c.log("(true).toInt()      = " + (true).toInt());
+
+// The Int / Double helper classes hold handy functions.
+c.log("Int.maxVal()        = " + Int.maxVal());

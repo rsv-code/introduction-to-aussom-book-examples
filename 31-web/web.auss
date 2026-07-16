@@ -1,0 +1,29 @@
+// web.auss - fetch and send JSON over HTTP
+include http;
+
+h = new Http();
+
+// --- GET: fetch a resource ---
+res = h.get("https://jsonplaceholder.typicode.com/todos/1");
+c.log("GET status: " + res["info"]["responseCode"]);
+todo = json.parse(res["body"]);                 // the body is JSON text
+c.log("todo: " + todo["title"] + " (done: " + todo["completed"] + ")");
+
+// --- POST: send JSON, read the reply ---
+payload = {"title": "Learn Aussom", "completed": false}.toJson();
+created = h.post("https://jsonplaceholder.typicode.com/posts", payload);
+c.log("POST status: " + created["info"]["responseCode"]);
+c.log("server assigned id " + json.parse(created["body"])["id"]);
+
+// --- an error status is reported in the response, not thrown ---
+missing = h.get("https://jsonplaceholder.typicode.com/todos/99999999");
+if (!missing["info"]["isSuccessful"]) {
+    c.log("lookup failed with status " + missing["info"]["responseCode"]);
+}
+
+// --- a connection failure DOES throw - catch it ---
+try {
+    h.get("https://no-such-host.invalid/");
+} catch (e) {
+    c.log("could not connect to the server");
+}

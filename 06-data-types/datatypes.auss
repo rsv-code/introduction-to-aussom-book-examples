@@ -1,0 +1,25 @@
+// Chapter 6 - The Nine Data Types
+// One value of each simple type, plus a list and a map,
+// with lang.type() reporting each type's name.
+
+nothing = null;
+flag    = true;
+whole   = 42;
+decimal = 3.14;
+text    = "hello";
+numbers = [1, 2, 3];
+person  = {"name": "Ada", "age": 36};
+
+c.log("null    -> " + lang.type(nothing));
+c.log("bool    -> " + lang.type(flag));
+c.log("int     -> " + lang.type(whole));
+c.log("double  -> " + lang.type(decimal));
+c.log("string  -> " + lang.type(text));
+c.log("list    -> " + lang.type(numbers));
+c.log("map     -> " + lang.type(person));
+
+// Truthiness: which values count as false inside a condition?
+if (0)    { c.log("0 is truthy"); }     else { c.log("0 is falsy"); }
+if ("")   { c.log("'' is truthy"); }    else { c.log("'' is falsy"); }
+if (null) { c.log("null is truthy"); }  else { c.log("null is falsy"); }
+if ("hi") { c.log("'hi' is truthy"); }  else { c.log("'hi' is falsy"); }

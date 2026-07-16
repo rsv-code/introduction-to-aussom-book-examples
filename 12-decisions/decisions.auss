@@ -1,0 +1,39 @@
+// Chapter 12 - Making Decisions
+
+score = 82;
+if (score >= 90) {
+    c.log("Grade: A");
+} else if (score >= 80) {
+    c.log("Grade: B");
+} else if (score >= 70) {
+    c.log("Grade: C");
+} else {
+    c.log("Grade: F");
+}
+
+// Truthiness: an empty string is falsy.
+name = "";
+if (name) {
+    c.log("Hello, " + name);
+} else {
+    c.log("No name was given.");
+}
+
+// Combining conditions with && (and) and || (or).
+age = 20;
+hasTicket = true;
+if (age >= 18 && hasTicket) {
+    c.log("Welcome to the show!");
+} else {
+    c.log("Sorry, you can't come in.");
+}
+
+// Nesting: a decision inside a decision.
+temp = 30;
+if (temp > 25) {
+    if (temp > 35) {
+        c.log("It's very hot.");
+    } else {
+        c.log("It's warm.");
+    }
+}

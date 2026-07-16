@@ -1,0 +1,8 @@
+name: greet
+version: 1.0.0
+description: "Package greet."
+license: "Apache-2.0"
+author: "Your Name"
+authorEmail: "you@example.com"
+type: pure
+dependencies: {}

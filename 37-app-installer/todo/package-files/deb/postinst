@@ -1,0 +1,6 @@
+#!/bin/sh
+# postinst - Debian package hook for this app.
+# Runs as root. Edit as needed.
+set -e
+ln -s /opt/todo/bin/Todo /usr/bin/todo
+exit 0

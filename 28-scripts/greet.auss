@@ -1,0 +1,13 @@
+#!/usr/bin/env -S aussom -s
+// greet.auss - greet everyone named on the command line (a script, no class needed)
+include os;
+
+if (#args == 0) {
+    os.outErr("usage: greet.auss <name> [name ...]");   // message to standard error
+    os.exit(1);                                          // stop with a failure code
+}
+
+for (name : args) {
+    c.log("Hello, " + name + "!");
+}
+c.log("Greeted " + #args + " name(s).");

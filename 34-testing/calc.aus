@@ -1,0 +1,8 @@
+// calc.aus - the code we want to test
+class Calculator {
+    public add(A, B) { return A + B; }
+    public divide(A, B) {
+        if (B == 0) { throw "Cannot divide by zero"; }
+        return A / B;
+    }
+}

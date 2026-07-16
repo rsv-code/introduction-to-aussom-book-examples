@@ -1,0 +1,31 @@
+// contacts.auss - a small SQLite database with jdbc
+include jdbc;
+
+// The SQLite driver ships with Aussom and is already on the classpath - just connect.
+db = new Jdbc();
+db.setConnectionInfo("org.sqlite.JDBC", "jdbc:sqlite:contacts.db", "", "");
+db.connect();
+
+// Create the table (fresh each run so the example is repeatable).
+db.execute("DROP TABLE IF EXISTS contact");
+db.execute("CREATE TABLE contact (id INTEGER PRIMARY KEY, name TEXT, city TEXT)");
+
+// Insert rows. The ? placeholders are filled from the list, safely.
+db.update("INSERT INTO contact (name, city) VALUES (?, ?)", ["Ada", "London"]);
+db.update("INSERT INTO contact (name, city) VALUES (?, ?)", ["Grace", "New York"]);
+db.update("INSERT INTO contact (name, city) VALUES (?, ?)", ["Alan", "London"]);
+
+// Query: selectMaps gives back a list of rows, each a map of column -> value.
+rows = db.selectMaps("SELECT id, name, city FROM contact WHERE city = ?", ["London"]);
+c.log("Contacts in London (" + #rows + "):");
+for (r : rows) {
+    c.log("  #" + r["id"] + "  " + r["name"] + " - " + r["city"]);
+}
+
+// Update: returns the number of rows changed.
+changed = db.update("UPDATE contact SET city = ? WHERE name = ?", ["Cambridge", "Ada"]);
+c.log("Rows changed: " + changed);
+ada = db.selectMaps("SELECT city FROM contact WHERE name = ?", ["Ada"])[0];
+c.log("Ada now lives in " + ada["city"]);
+
+db.disconnect();

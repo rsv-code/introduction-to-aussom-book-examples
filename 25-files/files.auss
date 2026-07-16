@@ -1,0 +1,28 @@
+// Chapter 25 - Files and the Filesystem
+include file;
+
+// --- writing and reading text ---
+file.write("greeting.txt", "Hello, files!\n");
+file.write("greeting.txt", "A second line.\n", true);   // append (3rd arg = true)
+c.log("contents:");
+c.log(file.read("greeting.txt"));
+
+lines = file.readLines("greeting.txt");                  // a list of lines
+c.log("line count: " + #lines);
+c.log("first line: " + lines[0]);
+
+// --- picking apart a path ---
+path = "/home/ada/reports/july.csv";
+c.log("name:   " + file.getName(path));                  // july.csv
+c.log("parent: " + file.getParent(path));                // /home/ada/reports
+c.log("ext:    " + file.getExt(path));                   // csv
+c.log("joined: " + file.join(["reports", "2026", "july.csv"]));
+
+// --- directories ---
+file.mkdirs("data/cache");                               // makes nested dirs
+c.log("data/cache is a dir? " + file.isDir("data/cache"));
+
+// --- clean up ---
+file.rm("greeting.txt");
+file.rmr("data");
+c.log("cleaned up. greeting.txt exists? " + file.exists("greeting.txt"));

@@ -1,0 +1,26 @@
+// Chapter 9 - Operators and Expressions
+
+// Comparison operators produce a bool.
+c.log("5 == 5:   " + (5 == 5));
+c.log("5 != 3:   " + (5 != 3));
+c.log("5 < 3:    " + (5 < 3));
+c.log("5 >= 5:   " + (5 >= 5));
+c.log("'a'=='a': " + ("a" == "a"));
+
+// Logical operators combine or flip booleans.
+c.log("true && false: " + (true && false));
+c.log("true || false: " + (true || false));
+c.log("!true:         " + (!true));
+
+// @= appends to a list; # counts a string, list, or map.
+items = [];
+items @= "first";
+items @= "second";
+c.log("items: " + #items + " long, first = " + items[0]);
+c.log("length of \"hello\": " + #"hello");
+
+// Precedence: * before +, and parentheses win.
+c.log("2 + 3 * 4    = " + (2 + 3 * 4));
+c.log("(2 + 3) * 4  = " + ((2 + 3) * 4));
+// && runs before ||, so this is true || (false && false) = true.
+c.log("true || false && false = " + (true || false && false));

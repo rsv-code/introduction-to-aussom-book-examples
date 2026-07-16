@@ -1,0 +1,23 @@
+// Chapter 8 - Working with Strings
+
+s = "Hello, Aussom!";
+c.log("length:      " + s.length());
+c.log("upper:       " + s.toUpper());
+c.log("lower:       " + s.toLower());
+c.log("charAt(0):   " + s.charAt(0));
+c.log("substr(7):   " + s.substr(7));      // index 7 to the end
+c.log("substr(0,5): " + s.substr(0, 5));   // index 0 up to (not incl.) 5
+c.log("indexOf:     " + s.indexOf("Aussom"));
+c.log("contains:    " + s.contains("Aussom"));
+c.log("startsWith:  " + s.startsWith("Hello"));
+c.log("replace:     " + s.replace("Aussom", "World"));
+c.log("trim:        '" + "   spaced   ".trim() + "'");
+
+// split() breaks a string into a list of pieces.
+parts = "red,green,blue".split(",");
+c.log("split count: " + #parts + ", first: " + parts[0]);
+
+// Build a longer string from values with + (non-strings convert automatically).
+name = "Ada";
+age = 36;
+c.log("Message:     " + name + " is " + age + " years old.");

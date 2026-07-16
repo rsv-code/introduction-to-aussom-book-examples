@@ -1,0 +1,32 @@
+// Chapter 17 - Inheritance and Polymorphism
+
+class Animal {
+    public name = null;
+    public Animal(Nm) { this.name = Nm; }
+    public speak() { return "some sound"; }
+    // describe() calls this.speak() - which version runs depends on the object.
+    public describe() { return this.name + " says " + this.speak(); }
+}
+
+class Dog : Animal {
+    public Dog(Nm) { this.name = Nm; }
+    public speak() { return "woof"; }         // override the parent's speak()
+    public fetch() { return this.name + " fetches the ball"; }  // a Dog-only method
+}
+
+class Cat : Animal {
+    public Cat(Nm) { this.name = Nm; }
+    public speak() { return "meow"; }         // override
+}
+
+// A Dog is also an Animal: it has describe(), and instanceof Animal is true.
+rex = new Dog("Rex");
+c.log(rex.describe());                         // uses Dog's speak() via this.speak()
+c.log(rex.fetch());                            // Dog-only method
+c.log("rex is an Animal? " + (rex instanceof "Animal"));
+
+// Polymorphism: one loop, different behavior depending on each object.
+animals = [new Dog("Rex"), new Cat("Felix"), new Animal("Thing")];
+for (a : animals) {
+    c.log(a.describe());
+}

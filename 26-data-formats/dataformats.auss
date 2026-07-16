@@ -1,0 +1,25 @@
+// Chapter 26 - Data Formats: JSON, XML, and YAML
+include file;
+include xml;
+include yaml;
+
+// ===== JSON: write data to a file and read it back =====
+config = {"name": "Ada", "level": 7, "tags": ["cli", "jvm"]};
+file.write("config.json", config.toJson());
+loaded = json.parse(file.read("config.json"));
+c.log("JSON:  name=" + loaded["name"] + " level=" + loaded["level"] + " tags=" + loaded["tags"].join("/"));
+
+// ===== XML: parse a document into a tree of maps =====
+doc = "<book id=\"42\"><title>Aussom</title><author>Ada</author></book>";
+tree = xml.parse(doc);
+book = tree["children"][0];                     // the root <book> element
+title = book["children"][0];                    // its <title> child
+c.log("XML:   id=" + book["attributes"]["id"] + " title=" + title["children"][0]["value"]);
+
+// ===== YAML: parse and produce =====
+settings = yaml.parse("host: localhost\nport: 8080\n");
+c.log("YAML:  " + settings["host"] + ":" + settings["port"]);
+c.log("--- dumped YAML ---");
+c.log(yaml.dump({"ok": true, "count": 3}));
+
+file.rm("config.json");

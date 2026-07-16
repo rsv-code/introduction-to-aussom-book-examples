@@ -1,0 +1,23 @@
+// Chapter 25 - Binary data with Buffer
+include file;
+
+// A Buffer is a fixed-size box of bytes. Write typed values into it, in order.
+buf = new Buffer(32);
+buf.addByte(65);            // one byte (the letter 'A' is 65)
+buf.addInt(2026);           // a 4-byte whole number
+buf.addString("Aussom");    // some text
+c.log("buffer size: " + buf.size());
+
+// Read them back, in the same order, from the start.
+buf.readSeek(0);
+c.log("byte: " + buf.getByte());
+c.log("int:  " + buf.getInt());
+c.log("text: " + buf.getStringAt(6));
+
+// Save a buffer to a binary file, then read it back.
+msg = new Buffer(#"binary data");
+msg.addString("binary data");
+file.writeBinary("data.bin", msg);
+loaded = file.readBinary("data.bin");
+c.log("from file: " + loaded.getString());
+file.rm("data.bin");

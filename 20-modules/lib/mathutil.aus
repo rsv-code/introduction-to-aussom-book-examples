@@ -1,0 +1,4 @@
+// A math helper module, kept in a subfolder.
+class MathUtil {
+    public square(N) { return N * N; }
+}

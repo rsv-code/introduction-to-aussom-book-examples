@@ -1,0 +1,13 @@
+/**
+ * A small greetings module.
+ */
+class Greeter {
+    /**
+     * Builds a friendly greeting.
+     * @p Name is the name to greet.
+     * @r string - the finished greeting.
+     */
+    public greet(Name) {
+        return "Hello, " + Name + "!";
+    }
+}

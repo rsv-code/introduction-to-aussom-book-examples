@@ -1,0 +1,3 @@
+// The classic first program, written as a script. It prints a friendly
+// greeting to the console, then the program ends.
+c.log("Hello, Aussom!");

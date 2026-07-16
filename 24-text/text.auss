@@ -1,0 +1,26 @@
+// Chapter 24 - Text Tools: Regex, Encoding, and IDs
+include util;
+
+// ---- regex: find and replace with patterns ----
+text = "Order 12 shipped, order 7 pending, order 108 done.";
+nums = regex.match("[0-9]+", text);            // list of every match
+c.log("numbers: " + nums.join(", "));
+c.log("first:   " + regex.matchFirst("[0-9]+", text));
+c.log("masked:  " + regex.replace("[0-9]+", "#", text));
+
+// ---- base64: turn text into safe, portable characters ----
+msg = "Hello, Aussom!";
+encoded = base64.encode(msg);                  // string in, base64 string out
+c.log("base64:  " + encoded);
+c.log("decoded: " + base64.decode(encoded));
+
+// a variant that's safe in URLs, filenames, and headers (0-9, a-f only)
+c.log("safe:    " + base64.encodeSafe(msg));
+
+// ---- hex: works on raw bytes, via a Buffer ----
+hbuf = new Buffer(#msg);
+hbuf.addString(msg);
+c.log("hex:     " + hex.encode(hbuf));
+
+// ---- uuid: a unique identifier ----
+c.log("uuid:    " + uuid.get());

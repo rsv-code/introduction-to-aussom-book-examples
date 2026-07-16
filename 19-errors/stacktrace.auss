@@ -1,0 +1,23 @@
+// Chapter 19 - Reading a stack trace
+
+class Bank {
+    public divide(A, B) {
+        return A / B;                  // divide by zero throws HERE
+    }
+    public applyRate(Amount) {
+        return this.divide(Amount, 0);
+    }
+    public process(Amount) {
+        return this.applyRate(Amount);
+    }
+}
+
+bank = new Bank();
+
+try {
+    bank.process(100);
+} catch (e) {
+    c.log("Error: " + e.getText());
+    c.log("Here is where it happened:");
+    e.printStackTrace();
+}

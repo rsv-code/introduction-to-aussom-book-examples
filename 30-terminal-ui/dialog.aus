@@ -1,0 +1,12 @@
+// dialog.aus - a modal dialog with curses
+include curses;
+
+class App {
+    public main(args) {
+        sc = new screen();
+        g = new gui(sc, color.blue);
+        g.start();
+        dialog.show(g, "Saved", "Your contact was saved successfully.", dlgbtn.ok);
+        g.stop();
+    }
+}

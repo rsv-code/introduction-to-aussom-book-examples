@@ -1,0 +1,19 @@
+// Chapter 27 - System and OS Access
+include sys;
+include os;
+
+// --- system information (sys) ---
+c.log("OS:       " + sys.getOsName() + " (" + sys.getOsArch() + ")");
+c.log("user:     " + sys.getUserName());
+c.log("home:     " + sys.getHomePath());
+c.log("aussom:   " + sys.getAussomVersion());
+
+// --- environment (os) ---
+c.log("os type:  " + os.getOsType());
+c.log("HOME:     " + os.getEnv("HOME"));
+c.log("missing:  " + os.getEnv("NOT_SET", "(default)"));
+
+// --- run an external command (os) ---
+res = os.exec("echo hello from the shell");
+c.log("output:   " + res["result"].trim());
+c.log("exit:     " + res["exitCode"] + ", ok? " + res["success"]);

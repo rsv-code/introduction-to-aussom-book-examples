@@ -1,0 +1,37 @@
+// Chapter 14 - Functions
+// In Aussom a function lives inside a class. Calc is a container
+// that groups a few related functions together.
+
+class Calc {
+    // A function that takes two inputs and returns their sum.
+    public add(A, B) {
+        return A + B;
+    }
+
+    // A default parameter: if step is left out, it is 1.
+    public increment(N, Step = 1) {
+        return N + Step;
+    }
+
+    // One function calling another with this.
+    public addThenDouble(A, B) {
+        sum = this.add(A, B);
+        return sum * 2;
+    }
+
+    // A private helper: usable inside the class, hidden from outside.
+    private square(N) {
+        return N * N;
+    }
+
+    public sumOfSquares(A, B) {
+        return this.square(A) + this.square(B);
+    }
+}
+
+calc = new Calc();
+c.log("add(2, 3)           = " + calc.add(2, 3));
+c.log("increment(10)       = " + calc.increment(10));
+c.log("increment(10, 5)    = " + calc.increment(10, 5));
+c.log("addThenDouble(2, 3) = " + calc.addThenDouble(2, 3));
+c.log("sumOfSquares(3, 4)  = " + calc.sumOfSquares(3, 4));

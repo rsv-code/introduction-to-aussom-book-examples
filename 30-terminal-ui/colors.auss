@@ -1,0 +1,26 @@
+// colors.auss - styling terminal text with jansi
+include jansi;
+jansi.systemInstall();          // turn on ANSI handling
+
+// named foreground colors
+a = new ansi();
+a.fgRed().a("red ").fgGreen().a("green ").fgYellow().a("yellow ");
+a.fgBlue().a("blue ").fgCyan().a("cyan ").fgMagenta().a("magenta").reset();
+jansi.println(a);
+
+// bold and underline
+b = new ansi();
+b.bold().a("bold text").reset().a("   ").underline().a("underlined text").reset();
+jansi.println(b);
+
+// foreground + background together
+d = new ansi();
+d.fgWhite().bgBlue().bold().a(" HEADER ").reset();
+jansi.println(d);
+
+// the compact markup form: @|style text|@
+e = new ansi();
+e.render("@|red,bold Error:|@ @|green done|@ - finished");
+jansi.println(e);
+
+jansi.systemUninstall();

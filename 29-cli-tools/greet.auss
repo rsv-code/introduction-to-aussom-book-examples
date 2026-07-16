@@ -1,0 +1,44 @@
+// greet.auss - a small command-line tool built with cliparser
+include cliparser;
+include os;
+
+// 1. Declare the options.
+opts = new CliOptions();
+opts.value("n", "name", "Name to greet");
+opts.value("c", "count", "How many times to greet (default 1)");
+opts.flag("u", "upper", "Shout the greeting in uppercase");
+opts.flag("h", "help", "Show this help and exit");
+
+// 2. Parse the command line.
+parser = new CliParser();
+parser.options(opts);
+usage = "greet -n <name> [options]";
+
+result = null;
+try {
+    result = parser.parse(args);
+} catch (e) {
+    c.err("could not read the options");
+    parser.help(usage);
+    os.exit(2);
+}
+
+// 3. Handle help and required input.
+if (result.has("help")) {
+    parser.help(usage);
+    os.exit(0);
+}
+if (!result.has("name")) {
+    c.err("the --name option is required");
+    parser.help(usage);
+    os.exit(2);
+}
+
+// 4. Do the work.
+name = result.value("name");
+count = result.value("count", "1").parseInt();
+greeting = "Hello, " + name + "!";
+if (result.has("upper")) { greeting = greeting.toUpper(); }
+for (i = 0; i < count; i++) {
+    c.log(greeting);
+}

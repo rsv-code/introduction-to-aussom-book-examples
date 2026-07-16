@@ -1,0 +1,3 @@
+class Greet {
+    public hello(Name) { return "Hello, " + Name + "!"; }
+}

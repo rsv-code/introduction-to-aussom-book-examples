@@ -1,0 +1,34 @@
+// Chapter 15 - Callbacks
+// A callback is a reference to a function that you can pass
+// around and call later.
+
+class Tools {
+    public double(N) { return N * 2; }
+    public triple(N) { return N * 3; }
+
+    // applyTo takes a callback and runs it on every item.
+    public applyTo(Cb, Items) {
+        result = [];
+        for (x : Items) {
+            result @= Cb.call(x);      // .call runs the callback
+        }
+        return result;
+    }
+
+    // A comparator for sortCustom: longer strings come first.
+    public byLengthDesc(A, B) {
+        return #B - #A;
+    }
+
+    public run() {
+        nums = [1, 2, 3, 4];
+        c.log("doubled:   " + this.applyTo(::double, nums).join(", "));
+        c.log("tripled:   " + this.applyTo(::triple, nums).join(", "));
+
+        words = ["bb", "a", "cccc", "ddd"];
+        words.sortCustom(::byLengthDesc);
+        c.log("by length: " + words.join(", "));
+    }
+}
+
+new Tools().run();

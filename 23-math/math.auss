@@ -1,0 +1,26 @@
+// Chapter 23 - Math
+include math;
+
+// constants
+c.log("pi = " + math.pi());
+c.log("e  = " + math.e());
+
+// rounding
+c.log("round(3.7) = " + math.round(3.7));
+c.log("ceil(3.2)  = " + math.ceil(3.2));
+c.log("floor(3.9) = " + math.floor(3.9));
+
+// powers and roots
+c.log("2 ^ 10    = " + math.pow(2, 10));
+c.log("sqrt(144) = " + math.sqrt(144));
+
+// everyday helpers
+c.log("abs(-7)   = " + math.abs(-7));
+c.log("max(3, 9) = " + math.max(3, 9));
+
+// trig - angles are in radians; toRad converts from degrees
+c.log("sin(90 deg) = " + math.sin(math.toRad(90)));
+
+// random: rand() gives a double in [0, 1); scale it for a dice roll
+roll = (math.floor(math.rand() * 6) + 1).toInt();
+c.log("dice roll (1-6): " + roll);

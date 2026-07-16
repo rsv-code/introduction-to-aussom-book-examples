@@ -1,0 +1,32 @@
+// Chapter 19 - Handling Errors
+
+class Calculator {
+    public divide(A, B) {
+        if (B == 0) {
+            throw "Cannot divide by zero!";    // raise our own error
+        }
+        return A / B;
+    }
+}
+
+calc = new Calculator();
+
+// A normal call works.
+c.log("10 / 2 = " + calc.divide(10, 2));
+
+// A bad call throws - we catch it instead of crashing.
+try {
+    c.log("10 / 0 = " + calc.divide(10, 0));
+} catch (e) {
+    c.log("Caught an error: " + e.getText());
+}
+
+// Errors from the language itself are catchable too.
+try {
+    nums = [1, 2, 3];
+    c.log("Item 99: " + nums[99]);
+} catch (e) {
+    c.log("Caught a language error: " + e.getText());
+}
+
+c.log("The program finished normally.");

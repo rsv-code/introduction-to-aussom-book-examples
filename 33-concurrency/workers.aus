@@ -1,0 +1,36 @@
+// workers.aus - many threads safely sharing one counter
+include thread;
+include concurrent;
+
+class Counter {
+    public total = null;
+
+    public Counter() {
+        this.total = new AtomicLong(0);      // a thread-safe number
+    }
+
+    // Each thread runs this: add 1 to the shared total, 1000 times.
+    public count() {
+        for (i = 0; i < 1000; i++) {
+            this.total.incrementAndGet();     // atomic: no updates get lost
+        }
+    }
+
+    public main(args) {
+        c.log("Starting 4 worker threads...");
+        threads = [];
+        for (i = 0; i < 4; i++) {
+            t = new Thread();
+            t.setOnRun(::count);              // run count() on this thread
+            t.startThread();
+            threads @= t;
+        }
+
+        for (t : threads) {
+            t.join();                         // wait for each thread to finish
+        }
+
+        c.log("All threads finished.");
+        c.log("Total counted: " + this.total.get() + "  (4 x 1000)");
+    }
+}
